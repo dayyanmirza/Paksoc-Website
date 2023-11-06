@@ -1,21 +1,19 @@
 import { useState } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
-    
-    const [name, setName] = useState('mario'); // if name is just called without the use of setName then mario is returned
-    const [age, setAge] = useState(25);
-
-    const handleClick = () => {
-        setName('dayyan'); // this changes the name to luigi 
-        setAge(20)
-    } 
+    const [blogs, setBlogs] = useState([
+        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+        { title: 'Welcome website', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
+        { title: 'Woah', body: 'lorem ipsum...', author: 'dayyan', id: 3 }
+        
+    ]);
 
     
     return ( 
         <div className="home">
-            <h2>Homepage</h2>
-            <p>{ name } is { age } years old</p>
-            <button onClick={handleClick}>Click Me</button>
+            {/* put the props in the BlogsList, put the blogs (parent) data in the BlogList (child) component */}
+            <BlogList blogs={blogs} /* <-- this is the prop*/ title="All Blogs" />
         </div>
     );
 }
